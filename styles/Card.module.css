@@ -1,0 +1,102 @@
+.card{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    width: 350px;
+    min-height: 100px;
+    border-radius: 2%;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.card i{
+    cursor: pointer;
+}
+
+.taskItem, .completedTasks, .completedTaskItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 10px;
+}
+
+.addTask, .addTaskInput{
+    padding: 3px 10px;
+}
+
+.addTask, .taskItemData, .completedTaskItemData, .addTaskInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.addTaskInput{
+    justify-content: space-between !important;
+}
+
+
+.addTask > p, .taskItem > .taskItemData > p, .taskItem > p, .completedTaskItemData > p{
+    margin: 0;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+
+.addTask > span, .addTaskInput > span{
+    color: blue;
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.completedTasks > p{
+    margin: 10px !important;
+    padding: 0;
+    font-weight: 600;
+}
+
+.completedTaskItemData > p{
+    text-decoration: line-through;
+}
+
+
+.taskInput{
+    border: none;
+    border-bottom: 0.5px solid blue;
+    background-color: white;
+    color: black;
+    width: 85%;
+    outline: none;
+}
+
+.delete:hover{
+    color: red;
+    transition: 0.1s all linear;
+}
+
+.edit:hover{
+    transition: 0.1s all linear;
+    color: rgb(242, 122, 10);
+}
+
+.checked{
+    color: green;
+}
+
+.check:hover{
+    color: rgb(243, 6, 252);
+    transition: 0.1s all linear;
+}
+
+.check{
+    color: rgb(80, 107, 239);
+}
+
+.hideCompleted{
+    display: none;
+    transition: 10s all linear;
+}
+
+.shoeCompleted{
+    transition: 10s all linear;
+}
