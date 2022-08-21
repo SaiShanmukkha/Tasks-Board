@@ -1,0 +1,9 @@
+.CardController{
+    background-color: rgb(200, 194, 194);
+    height: 30px;
+    max-height: 30px;
+    width: 100%;
+    min-width: 250px;
+    padding: 0px 10px;
+}
+
