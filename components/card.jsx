@@ -126,7 +126,7 @@ export default function Card(props) {
       })}
 
       <div className={styles.completedTasks}>
-        <p>Completed({Items.length})</p>
+        <p>Completed Tasks</p>
         <i
           className={`bi bi-chevron-${toggleCompleted ? "up" : "down"}`}
           onClick={toggleCompletedVisiblity}
