@@ -56,7 +56,7 @@ export default function CardItem(props) {
             ></i>
             <i
               className={`bi bi-trash ${styles.delete}`}
-              onClick={() => props.deleteItem(props.item)}
+              onClick={() => props.deleteItem(props.item.Id)}
             ></i>
           </div>
         </div>

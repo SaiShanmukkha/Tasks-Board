@@ -1,9 +1,22 @@
 .CardController{
-    background-color: rgb(200, 194, 194);
-    height: 30px;
-    max-height: 30px;
+    background-color: rgb(255, 255, 255);
+    height: 45px;
+    max-height: 45px;
     width: 100%;
     min-width: 250px;
-    padding: 0px 10px;
+    padding: 2px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
+.customizedButton:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.customizedButton{
+    border: 2px solid;
+    display: inline;
+}

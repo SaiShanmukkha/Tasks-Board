@@ -1,11 +1,30 @@
 import Head from "next/head";
-import Image from "next/image";
 import Card from "../components/card";
 import styles from "../styles/Home.module.css";
 import NavigationBar from "../components/NavigationBar";
 import CardController from "../components/cardController";
+import { useState, useRef } from "react";
+
 
 export default function Home() {
+  const [TaskBoardLists, setTaskBoardLists] = useState([]);
+
+  
+  function addNewTaskList(){
+    const rand = Math.floor(100000 + Math.random() * 900000);
+
+    const newTaskList = {
+      TaskListID: rand,
+      TaskListName: `My Task List ${rand}`,
+      TaskListItems: []
+    };
+
+    const NewTaskListItems = [...TaskBoardLists, newTaskList];
+    setTaskBoardLists(NewTaskListItems);
+
+
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,9 +35,11 @@ export default function Home() {
 
       <div className={styles.main}>
         <NavigationBar className={styles.nav}/>
-        <CardController />
+        <CardController addNewTaskList={addNewTaskList}/>
         <div className={styles.grid}>
-          <Card />
+          {TaskBoardLists.map((e)=>{
+            return <Card key={e.TaskListID} TaskListData={e} />            
+          })}
         </div>
       </div>
     </div>

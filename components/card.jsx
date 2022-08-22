@@ -3,12 +3,13 @@ import styles from "../styles/Card.module.css";
 import CardItem from "./CardItem";
 import CompletedCardItem from "./completedCardItem";
 
-export default function Card() {
+export default function Card(props) {
   const [isInputActive, setIsInputActive] = useState(false);
   const [toggleCompleted, setToggleCompleted] = useState(false);
   const [newItem, setNewItem] = useState("");
-  const [Items, setItems] = useState([]);
-  const [CompletedItems, SetCompletedItems] = useState([]);
+  const [TaskListName, setTaskListName] = useState(props.TaskListData.TaskListName);
+  const [Items, setItems] = useState(props.TaskListData.TaskListItems);
+
 
   const handleKeyPress = (ecode)=>{
     if(isInputActive){
@@ -30,27 +31,24 @@ export default function Card() {
     setIsInputActive(false);
   };
   const toggleCompletedVisiblity = () => {
-    console.log("clicked toggle");
     setToggleCompleted(!toggleCompleted);
   };
 
   function markItemComplete(item) {
-    console.log("Mark Item Complete Called.");
     var filtered = Items.filter(function (value, index) {
       return value.Id !== item.Id;
     });
-    setItems(filtered);
-    const nCompletedItems = [item, ...CompletedItems];
-    SetCompletedItems(nCompletedItems);
+    item.IsCompleted = true;
+    const nItems = [item, ...filtered];
+    setItems(nItems);
   }
-
+  
   function MarkInComplete(item) {
-    console.log("Mark Item as incomplete Called.");
-    var filtered = CompletedItems.filter(function (value, index) {
+    var filtered = Items.filter(function (value, index) {
       return value.Id !== item.Id;
     });
-    SetCompletedItems(filtered);
-    const nItems = [item, ...Items];
+    item.IsCompleted = false;
+    const nItems = [item, ...filtered];
     setItems(nItems);
   }
 
@@ -58,7 +56,8 @@ export default function Card() {
     if(newItem.trim() !== ""){
         const nItem = {
             Id: Math.floor(100000 + Math.random() * 900000),
-            ItemName: newItem.trim()
+            ItemName: newItem.trim(),
+            IsCompleted: false
         };
         const nItems = [nItem, ...Items];
         setItems(nItems);
@@ -81,23 +80,16 @@ export default function Card() {
         }
     }
 
-  function deleteCompletedItem(item) {
-    var filtered = CompletedItems.filter(function (value, index) {
-      return value.Id !== item.Id;
-    });
-    SetCompletedItems(filtered);
-  }
-
-  function deleteItem(item) {
+  function deleteItem(itemId) {
     var filtered = Items.filter(function (value, index) {
-      return value.Id !== item.Id;
+      return value.Id !== itemId;
     });
     setItems(filtered);
   }
 
   return (
     <div className={styles.card}>
-      <h6 className="">My Tasks</h6>
+      <h6 className="">{TaskListName}</h6>
       {!isInputActive && (
         <div className={styles.addTask} onClick={ShowTaskInputEntry}>
           <span>+</span>
@@ -126,13 +118,15 @@ export default function Card() {
       )}
 
       {Items.map((item) => {
-        return (
-          <CardItem key={item.Id} item={item} markItemComplete={markItemComplete} deleteItem={deleteItem} saveTaskItem={saveTaskItem}/>
-        );
+        if(!item.IsCompleted){
+          return (
+            <CardItem key={item.Id} item={item} markItemComplete={markItemComplete} deleteItem={deleteItem} saveTaskItem={saveTaskItem}/>
+          );
+        }
       })}
 
       <div className={styles.completedTasks}>
-        <p>Completed({CompletedItems.length})</p>
+        <p>Completed({Items.length})</p>
         <i
           className={`bi bi-chevron-${toggleCompleted ? "up" : "down"}`}
           onClick={toggleCompletedVisiblity}
@@ -144,10 +138,12 @@ export default function Card() {
           toggleCompleted ? styles.showCompleted : styles.hideCompleted
         }`}
       >
-        {CompletedItems.map((item) => {
-          return (
-            <CompletedCardItem key={item.Id} item={item} markInComplete={MarkInComplete} deleteCompletedItem={deleteCompletedItem} />
-          );
+        {Items.map((item) => {
+          if(item.IsCompleted){
+            return (
+              <CompletedCardItem key={item.Id} item={item} markInComplete={MarkInComplete} deleteCompletedItem={deleteItem} />
+            );
+          }
         })}
       </div>
     </div>

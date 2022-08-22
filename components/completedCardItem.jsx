@@ -14,7 +14,7 @@ export default function CompletedCardItem(props) {
       <div>
         <i
           className={`bi bi-trash ${styles.delete}`}
-          onClick={() => props.deleteCompletedItem(props.item)}
+          onClick={() => props.deleteCompletedItem(props.item.Id)}
         ></i>
       </div>
     </div>
