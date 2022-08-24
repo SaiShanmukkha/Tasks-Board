@@ -11,12 +11,12 @@
     align-items: center;
 }
 
-.customizedButton:focus{
-    outline: none;
-    box-shadow: none;
-}
-
 .customizedButton{
     border: 2px solid;
     display: inline;
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
+    outline: none;
+    box-shadow: none;
 }

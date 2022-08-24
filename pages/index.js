@@ -3,26 +3,29 @@ import Card from "../components/card";
 import styles from "../styles/Home.module.css";
 import NavigationBar from "../components/NavigationBar";
 import CardController from "../components/cardController";
-import { useState, useRef } from "react";
+import { useState } from "react";
+import cstyle from "../styles/CardController.module.css";
 
 
 export default function Home() {
   const [TaskBoardLists, setTaskBoardLists] = useState([]);
 
-  
-  function addNewTaskList(){
+  function addNewTaskList() {
     const rand = Math.floor(100000 + Math.random() * 900000);
-
     const newTaskList = {
       TaskListID: rand,
-      TaskListName: `My Task List ${rand}`,
-      TaskListItems: []
+      TaskListName: `My TaskList ${rand}`,
+      TaskListItems: [],
     };
-
     const NewTaskListItems = [...TaskBoardLists, newTaskList];
     setTaskBoardLists(NewTaskListItems);
+  }
 
-
+  function deleteTaskList(TaskListID) {
+    var filtered = TaskBoardLists.filter(function (value, index) {
+      return value.TaskListID !== TaskListID;
+    });
+    setTaskBoardLists(filtered);
   }
 
   return (
@@ -34,12 +37,22 @@ export default function Home() {
       </Head>
 
       <div className={styles.main}>
-        <NavigationBar className={styles.nav}/>
-        <CardController addNewTaskList={addNewTaskList}/>
+        <NavigationBar className={styles.nav} />
+        {/* <CardController addNewTaskList={addNewTaskList} /> */}
+        <h5 style={{padding:"5px"}}>Main Board</h5>
         <div className={styles.grid}>
-          {TaskBoardLists.map((e)=>{
-            return <Card key={e.TaskListID} TaskListData={e} />            
+          {TaskBoardLists.map((item) => {
+            return (
+              <Card
+                key={item.TaskListID}
+                TaskListData={item}
+                deleteTaskList={deleteTaskList}
+              />
+            );
           })}
+          <div className={cstyle.CardController}>
+            <button className={`btn btn-outline-primary fw-semibold overflow-hidden px-1 ${cstyle.customizedButton}`} onClick={addNewTaskList}> + New List </button>
+          </div>
         </div>
       </div>
     </div>

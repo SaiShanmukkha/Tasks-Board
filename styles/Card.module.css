@@ -3,7 +3,7 @@
     color: rgb(0, 0, 0);
     width: 350px;
     min-width: 350px;
-    min-height: 100px;
+    min-height: 150px;
     border-radius: 10px;
     border: 2px solid black;
     padding: 10px;
@@ -12,6 +12,56 @@
 
 .card i{
     cursor: pointer;
+}
+
+.cardHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardTitle{
+    margin-right: 5px;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    -ms-word-wrap: break-word;
+}
+
+.cardMenu{
+    position: relative;
+    display: inline-block;
+    margin: 0;
+}
+
+.dropdownContent{
+    right: 13px;
+    top: 12px;
+    border-radius: 10px 0px 10px 10px;
+    background-color: rgb(220, 230, 224);
+    z-index: 20;
+    position: absolute;
+    display: none;
+    
+}
+
+.cardMenu:hover .dropdownContent{
+    display: block;
+    transition: 1s all ease-out;
+}
+
+.dropdownContent p{
+    padding: 8px;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.cardMenu:hover .dropdownContent p:hover{
+    border-radius: 10px 0px 10px 10px;
+    transition: 0.2s all ease;
+    background-color: rgb(157, 181, 247);
 }
 
 .taskItem, .completedTasks, .completedTaskItem{
@@ -72,7 +122,6 @@
     text-decoration: line-through;
 }
 
-
 .taskInput{
     border: none;
     border-bottom: 0.5px solid blue;
@@ -89,7 +138,7 @@
 
 .edit:hover{
     transition: 0.1s all linear;
-    color: rgb(242, 122, 10);
+    color: rgb(2, 194, 253);
 }
 
 .checked{
