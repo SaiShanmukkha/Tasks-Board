@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik+Iso:regular,bold,italic&subset=latin,latin-ext');
 
 .Navbar{
-    background-color: rgb(38, 4, 71);
+    background-color: rgb(38, 7, 69);
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 45px;
     width: 100%;
     min-width: 370px;
@@ -15,18 +15,14 @@
 }
 
 /* Title section */
-
 .navTitle{
+    flex: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 15px;
     padding-right: 2px;
     cursor: pointer;
-}
-
-.navTitle img{
-    border-radius: 50%;
 }
 
 .mainTitle{
@@ -41,92 +37,18 @@
     overflow: hidden;
 }
 
-/*
-.mainTitle h3{
-    margin-left: 10px;
-}
 
-.mainTitle img{
-    margin-left: 2px;
-}
-
-.MenuIcon{
-    position: fixed;
-    left: 20px;
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-} 
-
-
-
-.NavbarSearch{
+.menuTrey{
+    flex: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: rgb(238, 238, 234);
-    border: 2px solid rgb(197, 195, 198);
-    padding: 0.5rem;
-    position: relative;
-    box-sizing: border-box;
-    border-radius: 15px;
-    max-width: 40%;
+    justify-content: flex-start;
 }
 
-
-.Search{
-    border: none;
-    width: 80%;
-    height: 100%;
-    font-size: large;
-    background-color: rgb(238, 238, 234);
-}
-
-.Search:focus {
-    outline: none;
-    background-color: whitesmoke;
-} 
-
-.SearchIcon{
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-}
-
-.loader{
-    border: 4px solid black;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-} 
-
-
-
-
-
-.NavbarOptions{
-    margin: 1rem;
-    justify-content: center;
-    align-items: center;
-}
 
 .OptionIcon{
-    width: 20px;
-    height: 20px;
-    margin: 5px;
+    width: 24px;
+    height: 24px;
+    color: white;
     cursor: pointer;
-} 
-
-
-
-.accountProfile{
-    background-color: red;
-    background-position: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-width: 40px;
-    min-height: 40px;
-    border-radius: 50%;
 }
-
- */
