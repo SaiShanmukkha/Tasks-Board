@@ -1,6 +1,6 @@
 import navStyle from '../styles/NavBar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRotate } from "@fortawesome/free-solid-svg-icons";
+import { faRotate, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Image from 'next/image';
 
 
@@ -17,9 +17,9 @@ export default function NavigationBar() {
           <span className={navStyle.mainTitle}>Tasks Board</span>
         </div>
         <div className={navStyle.menuTrey}>
-          <FontAwesomeIcon icon={faRotate} className={navStyle.OptionIcon} />
-          <FontAwesomeIcon icon={faRotate} className={navStyle.OptionIcon} />
-          <FontAwesomeIcon icon={faRotate} className={navStyle.OptionIcon} />
+          {/* <FontAwesomeIcon icon={faRotate} className={navStyle.OptionIcon} />
+          <FontAwesomeIcon icon={faTrash} className={navStyle.OptionIcon} />
+          <FontAwesomeIcon icon={faRotate} className={navStyle.OptionIcon} /> */}
         </div>
       </div>
     );

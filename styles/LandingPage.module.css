@@ -6,8 +6,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    width: 100vw;
-    min-width: 350px;
+    
     height: 100%;
     margin: 0;
     border: 0;
@@ -17,11 +16,15 @@
     overflow: scroll;
 }
 
+.LandingPage::-webkit-scrollbar{
+    display: none;
+}
+
 .LandingTitle{
     font-family: 'Oleo Script Swash Caps','Courier New', Courier, 'monospace';
     font-size: 4rem;
     width: 100vw;
-    min-width: 350px;
+    
     padding-top: 100px;
     margin-bottom: 0;
     background-color: transparent;
@@ -33,7 +36,7 @@
 .LandingPageDescriptionOne{
     display: flex;
     flex-direction: row;
-    min-width: 350px;
+    
     flex-wrap: wrap;
     justify-content: center;
     background-color: transparent;

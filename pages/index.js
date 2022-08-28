@@ -17,9 +17,9 @@ export default function Home() {
       </Head>
 
       <div className={styles.main}>
-        {/* <NavigationBar /> */}
-        {/* <HomePage /> */}
-        <LandingPage />
+        <NavigationBar />
+        <HomePage />
+        {/* <LandingPage /> */}
       </div>
     </div>
   );
