@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import NavigationBar from "../components/NavigationBar";
 import HomePage from "../components/Home";
+import LandingPage from "../components/landingPage";
 
 
 export default function Home() {
@@ -16,8 +17,9 @@ export default function Home() {
       </Head>
 
       <div className={styles.main}>
-        <NavigationBar />
-        <HomePage />
+        {/* <NavigationBar /> */}
+        {/* <HomePage /> */}
+        <LandingPage />
       </div>
     </div>
   );
