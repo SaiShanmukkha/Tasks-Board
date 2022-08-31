@@ -24,7 +24,7 @@ export default function CardItem(props) {
   function updateTaskItem(){
     if(updatedItemName.trim() !== ""){
       setEditItem(false);
-      props.saveTaskItem(props.item, updatedItemName);
+      props.saveTaskItem(props.item, updatedItemName.trim());
     }else{
       alert("Task Item shouldn't be empty");
       setEditItem(false);
