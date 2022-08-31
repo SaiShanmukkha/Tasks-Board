@@ -78,6 +78,33 @@
     margin: 3px;
 }
 
+.titleInput{
+    width: 80%;
+}
+
+.addTitleInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 3px 1px;
+    margin: 1px;
+}
+
+.addTitleInput input{
+    border: none;
+    border-bottom: 1px solid black;
+    width: 80%;
+}
+
+.addTitleInput span{
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0px 10px;
+}
+
 .addTask, .taskItemData, .completedTaskItemData, .addTaskInput{
     display: flex;
     flex-direction: row;
@@ -159,6 +186,6 @@
     transition: 10s all linear;
 }
 
-.shoeCompleted{
+.showCompleted{
     transition: 10s all linear;
 }

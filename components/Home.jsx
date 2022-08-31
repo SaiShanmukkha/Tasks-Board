@@ -8,7 +8,7 @@ const HomePage = (props)=>{
         const rand = Math.floor(100000 + Math.random() * 900000);
         const newTaskList = {
         TaskListID: rand,
-        TaskListName: `My TaskList ${rand}`,
+        TaskListName: `New TaskList ${rand}`,
         TaskListItems: [],
         };
         const NewTaskListItems = [...TaskBoardLists, newTaskList];
@@ -21,8 +21,18 @@ const HomePage = (props)=>{
         });
         setTaskBoardLists(filtered);
     }
+
+
+    const updateTaskListName = (myupdatedTaskListName, TaskListID)=>{
+      TaskBoardLists.forEach((item) => {
+        if (item.TaskListID == TaskListID) {
+          item.TaskListName = myupdatedTaskListName;
+        }
+      });
+    }
+
     return (<div className={styles.homePage}>
-        <h5 style={{padding:"5px", fontWeight:700, color:"#fff"}}>Main Board</h5>
+        <h5 style={{padding:"5px", fontWeight:700, color:"black"}}>Main Board</h5>
         <div className={styles.grid}>
           {TaskBoardLists.map((item) => {
             return (
@@ -30,6 +40,7 @@ const HomePage = (props)=>{
                 key={item.TaskListID}
                 TaskListData={item}
                 deleteTaskList={deleteTaskList}
+                updateTaskListName={updateTaskListName}
               />
             );
           })}

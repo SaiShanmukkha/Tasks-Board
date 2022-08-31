@@ -7,12 +7,13 @@ import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 
 export default function Card(props) {
   const [isInputActive, setIsInputActive] = useState(false);
+  const [isTitleInputActive, setIsTitleInputActive] = useState(false);
   const [toggleCompleted, setToggleCompleted] = useState(false);
   const [newItem, setNewItem] = useState("");
+  const [updatedTitleName, setUpdatedTitleName] = useState(props.TaskListData.TaskListName);
   const TaskListID = props.TaskListData.TaskListID;
-  const [TaskListName, setTaskListName] = useState(
-    props.TaskListData.TaskListName
-  );
+  const TaskListName = props.TaskListData.TaskListName;
+
   const [Items, setItems] = useState(props.TaskListData.TaskListItems);
   const [InCompleteItems, setInCompleteItems] = useState([]);
   const [CompletedItems, setCompletedItems] = useState([]);
@@ -21,7 +22,6 @@ export default function Card(props) {
     setCompletedItems(completedTasksItems);
     setInCompleteItems(InCompletedTasksItems);
   }
-
 
   useEffect(() => {
     const completedTasksItems = Items.filter(function (value, index) {
@@ -102,6 +102,16 @@ export default function Card(props) {
     }
   }
 
+
+  const UpdateTaskListName = (e)=>{
+    setIsTitleInputActive(false);
+    if(updatedTitleName.trim() != "" && updatedTitleName.trim() != props.TaskListData.TaskListName){
+      props.updateTaskListName(updatedTitleName, TaskListID)
+    }else{
+      alert("Title Shouldn't be empty");
+    }
+  }
+
   function deleteItem(itemId) {
     var filtered = Items.filter(function (value, index) {
       return value.Id !== itemId;
@@ -109,7 +119,7 @@ export default function Card(props) {
     setItems(filtered);
   }
 
-  function deleteFunc(e, TaskListName, TaskListID) {
+  const deleteFunc = (e, TaskListName, TaskListID)=> {
     e.preventDefault();
     const flag = confirm(`Deleting Task List - ${TaskListName}`);
     if (flag) {
@@ -117,26 +127,78 @@ export default function Card(props) {
     }
   }
 
-  function renameFunc(e){
-    e.preventDefault();
+  const renameFunc = (e) =>{
+    setIsTitleInputActive(true);
   }
-  
+
+  const HideTitleInputEntry = (e)=>{
+    setUpdatedTitleName(props.TaskListData.TaskListName);
+    setIsTitleInputActive(false);
+  }
+
+  const FocusOut = (e)=>{
+    if(updatedTitleName === props.TaskListData.TaskListName){
+      HideTitleInputEntry(e);
+    }
+  }
+
+  const handleTitleKeyPress = (ecode)=>{
+    if(isTitleInputActive){
+      if(ecode.code === "Enter"){
+          UpdateTaskListName();
+        }
+        if(ecode.code === "Escape"){
+          HideTitleInputEntry();
+        }
+    }
+  }
+
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
-        <h6 className={styles.cardTitle}>{TaskListName}</h6>
-        <div className={styles.cardMenu}>
-          <FontAwesomeIcon
-            icon={faEllipsisVertical}
-            style={{ width: "20px", height: "18px", cursor: "pointer" }}
-          />
-          <div className={styles.dropdownContent}>
-            <p onClick={(e) => renameFunc(e)}>Rename</p>
-            <p onClick={(e) => deleteFunc(e, TaskListName, TaskListID)}>
-              Delete
-            </p>
+        {!isTitleInputActive ? (
+          <>
+            <h6 className={styles.cardTitle}>{TaskListName}</h6>
+            <div className={styles.cardMenu}>
+              <FontAwesomeIcon
+                icon={faEllipsisVertical}
+                style={{ width: "20px", height: "18px", cursor: "pointer" }}
+              />
+              <div className={styles.dropdownContent}>
+                <p onClick={renameFunc}>Rename</p>
+                <p onClick={(e) => deleteFunc(e, TaskListName, TaskListID)}>
+                  Delete
+                </p>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className={styles.addTitleInput}>
+            <input
+              type={"text"}
+              className={styles.titleInput}
+              value={updatedTitleName}
+              placeholder="Enter Card Title"
+              onChange={(e) => setUpdatedTitleName(e.target.value)}
+              onKeyDown={handleTitleKeyPress}
+              maxLength={100}
+              minLength={1}
+              onBlur={FocusOut}
+              autoFocus
+              required
+            />
+            <span>
+            <i
+              className="bi bi-check"
+              style={{ color: "green" }}
+              onClick={UpdateTaskListName}
+            ></i>
+            </span>
+            <span onClick={HideTitleInputEntry} style={{ color: "red" }}>
+              x
+            </span>
           </div>
-        </div>
+        )}
       </div>
       {!isInputActive && (
         <div className={styles.addTask} onClick={ShowTaskInputEntry}>
