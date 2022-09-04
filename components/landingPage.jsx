@@ -1,5 +1,6 @@
 import styles from "../styles/LandingPage.module.css";
 import Image from "next/dist/client/image";
+import Link from 'next/link';
 
 const LandingPage = () => {
   return (
@@ -37,13 +38,16 @@ const LandingPage = () => {
               </li>
             </ul>
             <div className={styles.LandingPageAction}>
-              <button className={`${styles.buttonAction} ${styles.temperory}`}>
-                Continue
-              </button>
+              <Link href={"/home"}>
+                <button className={`${styles.buttonAction} ${styles.temperory}`}>
+                  Get Started
+                </button>
+              </Link>
               {/* <button className={`${styles.buttonAction} ${styles.persistent}`}>
                 Login/Register
               </button> */}
             </div>
+            <p>we also have persistent version of this Tasks Board. For more info <Link href={"mailto:maesterpycoder@gmail.com"}>mail us</Link></p>
           </div>
         </div>
       </div>
