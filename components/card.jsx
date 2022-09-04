@@ -4,6 +4,7 @@ import CardItem from "./CardItem";
 import CompletedCardItem from "./completedCardItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import notify from "./notify";
 
 export default function Card(props) {
   const [isInputActive, setIsInputActive] = useState(false);
@@ -85,8 +86,9 @@ export default function Card(props) {
       setItems(nItems);
       setNewItem("");
       HideTaskInputEntry();
+      notify({title: "", message: "Added New Item to List", type: "default", time:1000});
     } else {
-      alert("Value Shouldn't be Empty");
+      notify({title: "", message: "Item Shouldn't be Empty", type: "warning", time:1000});
       setNewItem("");
     }
   }
@@ -105,10 +107,16 @@ export default function Card(props) {
 
   const UpdateTaskListName = (e)=>{
     setIsTitleInputActive(false);
-    if(updatedTitleName.trim() != "" && updatedTitleName.trim() != props.TaskListData.TaskListName){
-      props.updateTaskListName(updatedTitleName, TaskListID)
+    if(updatedTitleName.trim() != ""){
+      if(updatedTitleName.trim() != props.TaskListData.TaskListName){
+        props.updateTaskListName(updatedTitleName, TaskListID);
+      }
+      else{
+        notify({title: "", message: "No Changes to make", type: "default", time:1000});
+      }
     }else{
-      alert("Title Shouldn't be empty");
+      setUpdatedTitleName(props.TaskListData.TaskListName);
+      notify({title: "", message: "TaskList title Shouldn't be empty", type: "warning", time:1000});
     }
   }
 
@@ -117,6 +125,7 @@ export default function Card(props) {
       return value.Id !== itemId;
     });
     setItems(filtered);
+    notify({title: "", message: "Deleted Task List Item", type: "danger", time:1000});
   }
 
   const deleteFunc = (e, TaskListName, TaskListID)=> {

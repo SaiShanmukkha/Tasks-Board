@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Card from "../components/card";
 import styles from "../styles/Home.module.css";
+import notify from "./notify";
 
-const HomePage = (props)=>{
+const HomePage = ()=>{
     const [TaskBoardLists, setTaskBoardLists] = useState([]);
     function addNewTaskList() {
         const rand = Math.floor(100000 + Math.random() * 900000);
@@ -13,6 +14,7 @@ const HomePage = (props)=>{
         };
         const NewTaskListItems = [...TaskBoardLists, newTaskList];
         setTaskBoardLists(NewTaskListItems);
+        notify({title: "", message: "Added New TaskList", type: "info", time:1500});
     }
 
     function deleteTaskList(TaskListID) {
@@ -20,6 +22,8 @@ const HomePage = (props)=>{
         return value.TaskListID !== TaskListID;
         });
         setTaskBoardLists(filtered);
+        notify({title: "", message: "Deleted TaskList", type: "danger", time:1500});
+        
     }
 
 
@@ -27,6 +31,7 @@ const HomePage = (props)=>{
       TaskBoardLists.forEach((item) => {
         if (item.TaskListID == TaskListID) {
           item.TaskListName = myupdatedTaskListName;
+          notify({title: "", message: "Updated TaskList Name", type: "success", time:1200});
         }
       });
     }

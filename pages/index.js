@@ -3,8 +3,9 @@ import styles from "../styles/Home.module.css";
 import NavigationBar from "../components/NavigationBar";
 import HomePage from "../components/Home";
 import LandingPage from "../components/landingPage";
-
-
+import { ReactNotifications } from 'react-notifications-component';
+import "animate.css";
+import 'react-notifications-component/dist/theme.css'
 export default function Home() {
   
 
@@ -17,6 +18,7 @@ export default function Home() {
       </Head>
 
       <div className={styles.main}>
+        <ReactNotifications />
         <NavigationBar />
         <HomePage />
         {/* <LandingPage /> */}

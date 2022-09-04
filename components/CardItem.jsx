@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/Card.module.css";
+import notify from "./notify";
 
 export default function CardItem(props) {
   const [editItem, setEditItem] = useState(false);
@@ -19,14 +20,16 @@ export default function CardItem(props) {
   function cancelUpdate(){
     setEditItem(false);
     setUpdatedItemName(props.item.ItemName);
+    notify({title: "", message: "Task Item update cancelled", type: "danger", time:1500});
   }
 
   function updateTaskItem(){
     if(updatedItemName.trim() !== ""){
       setEditItem(false);
       props.saveTaskItem(props.item, updatedItemName.trim());
+      notify({title: "", message: "Task Item updated", type: "success", time:1500});
     }else{
-      alert("Task Item shouldn't be empty");
+      notify({title: "", message: "Task Item shouldn't be empty", type: "warning", time:1500});
       setEditItem(false);
       setUpdatedItemName(props.item.ItemName);
     }
