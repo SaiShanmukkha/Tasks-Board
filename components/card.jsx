@@ -101,6 +101,9 @@ export default function Card(props) {
         }
       });
       setItems(Items);
+      notify({title: "", message: "Task Item updated", type: "success", time:1500});
+    }else{
+      notify({title: "", message: "No changes to Task Item", type: "default", time:1500});
     }
   }
 
