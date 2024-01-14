@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import styles from "../styles/Card.module.css";
 import notify from "./notify";

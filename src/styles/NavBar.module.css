@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik+Iso:regular,bold,italic&subset=latin,latin-ext');
 
 .Navbar{
-    background-color: rgb(8, 5, 174);
+    background-color: rgb(221, 219, 219);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,10 +33,9 @@
     padding-left: 5px;
     margin: 0;
     word-break: keep-all;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     overflow: hidden;
 }
-
 
 .menuTrey{
     flex: 1;
@@ -44,7 +43,6 @@
     align-items: center;
     justify-content: flex-start;
 }
-
 
 .OptionIcon{
     width: 24px;

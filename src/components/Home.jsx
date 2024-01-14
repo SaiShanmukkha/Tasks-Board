@@ -1,10 +1,13 @@
+"use client";
+
 import { useState } from "react";
 import Card from "../components/card";
 import styles from "../styles/Home.module.css";
-import notify from "./notify";
+// import notify from "./notify";
 
 const HomePage = ()=>{
     const [TaskBoardLists, setTaskBoardLists] = useState([]);
+
     function addNewTaskList() {
         const rand = Math.floor(100000 + Math.random() * 900000);
         const newTaskList = {
@@ -14,7 +17,7 @@ const HomePage = ()=>{
         };
         const NewTaskListItems = [...TaskBoardLists, newTaskList];
         setTaskBoardLists(NewTaskListItems);
-        notify({title: "", message: "Added New TaskList", type: "info", time:1500});
+        // notify({title: "", message: "Added New TaskList", type: "info", time:1500});
     }
 
     function deleteTaskList(TaskListID) {
@@ -22,7 +25,7 @@ const HomePage = ()=>{
         return value.TaskListID !== TaskListID;
         });
         setTaskBoardLists(filtered);
-        notify({title: "", message: "Deleted TaskList", type: "danger", time:1500});
+        // notify({title: "", message: "Deleted TaskList", type: "danger", time:1500});
         
     }
 
@@ -31,13 +34,12 @@ const HomePage = ()=>{
       TaskBoardLists.forEach((item) => {
         if (item.TaskListID == TaskListID) {
           item.TaskListName = myupdatedTaskListName;
-          notify({title: "", message: "Updated TaskList Name", type: "success", time:1200});
+          // notify({title: "", message: "Updated TaskList Name", type: "success", time:1200});
         }
       });
     }
 
     return (<div className={styles.homePage}>
-        <h5 style={{padding:"5px", fontWeight:700, color:"black"}}>Main Board</h5>
         <div className={styles.grid}>
           {TaskBoardLists.map((item) => {
             return (

@@ -1,3 +1,4 @@
+"use client";
 import { Store } from 'react-notifications-component';
 
 

@@ -6,7 +6,6 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    
     height: 100%;
     margin: 0;
     border: 0;
@@ -24,7 +23,7 @@
     font-family: 'Oleo Script Swash Caps','Courier New', Courier, 'monospace';
     font-size: 4rem;
     width: 100vw;
-    
+    font-weight: 900;
     padding-top: 100px;
     margin-bottom: 0;
     background-color: transparent;

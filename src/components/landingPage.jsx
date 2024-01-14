@@ -1,20 +1,21 @@
-import styles from "../styles/LandingPage.module.css";
-import Image from "next/dist/client/image";
+import styles from "@styles/LandingPage.module.css";
+import Image from "next/image";
 import Link from 'next/link';
+import Img from "@assets/LandingOneA.jpg"
 
 const LandingPage = () => {
   return (
     <>
       <div className={styles.LandingPage}>
-        <div className={styles.LandingTitle}>
-          <h1>Welcome to Tasks Board</h1>
-        </div>
+        <h1 className={styles.LandingTitle}>Welcome to Tasks Board</h1>
+
         <div className={styles.LandingPageDescriptionOne}>
           <div className={styles.ImageOne}>
             <Image
-              src={"/assets/images/LandingOneA.jpg"}
-              width={"300px"}
-              height={"200px"}
+              src={Img}
+              alt="Tasks-Board Image"
+              width={300}
+              height={200}
             />
           </div>
           <div className={styles.LandingPageDescription}>
@@ -47,7 +48,7 @@ const LandingPage = () => {
                 Login/Register
               </button> */}
             </div>
-            <p>we also have persistent version of this Tasks Board. For more info <Link href={"mailto:maesterpycoder@gmail.com"}>mail us</Link></p>
+            <p>we also have persistent version of this Tasks Board. For more info <Link href={"mailto:ssshanmukkha@gmail.com"}>mail me</Link></p>
           </div>
         </div>
       </div>
